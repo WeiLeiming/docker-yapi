@@ -14,7 +14,7 @@ YApi:  https://github.com/YMFE/yapi/releases
 ```
 git clone https://github.com/Ryan-Miao/docker-yapi.git
 cd docker-yapi
-bash build.sh 1.5.10
+bash build.sh 1.5.11
 bash start.sh  init-network
 bash start.sh start-mongo
 bash start.sh init-mongo
