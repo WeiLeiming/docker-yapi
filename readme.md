@@ -93,12 +93,12 @@ sh build.sh 1.5.10
 start with db initializtion
 
 ```
- docker run -d -p 3001:3001 --name yapi --net tools-net --ip 172.18.0.3 yapi --initdb
+ docker run -d -p 3000:3000 --name yapi --net tools-net --ip 172.18.0.3 yapi --initdb
 ```
 
 or just run 
 ```
-docker run -d -p 3001:3001 --name yapi --net tools-net --ip 172.18.0.3 yapi 
+docker run -d -p 3000:3000 --name yapi --net tools-net --ip 172.18.0.3 yapi 
 ```
 
 
@@ -109,7 +109,7 @@ docker run -d -p 3001:3001 --name yapi --net tools-net --ip 172.18.0.3 yapi
 log: mongodb load success...
 初始化管理员账号成功,账号名："ryan.miao@demo.com"，密码："ymfe.org"
 log: 服务已启动，请打开下面链接访问: 
-http://127.0.0.1:3001/
+http://127.0.0.1:3000/
 log: mongodb load success...
 ```
 

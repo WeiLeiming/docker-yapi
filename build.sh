@@ -20,4 +20,3 @@ wget -O yapi.tgz http://registry.npm.taobao.org/yapi-vendor/download/yapi-vendor
 echo -e "\033[32m build new image \033[0m"
 
 sudo docker build -t yapi .
-sudo docker tag yapi  yapi:$version
