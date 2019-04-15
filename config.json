@@ -1,6 +1,6 @@
 {
    "port": "3001",
-   "adminAccount": "ryan.miao@demo.com",
+   "adminAccount": "weileiming@zhongshianhong.com",
    "db": {
       "servername": "172.18.0.2",
       "DATABASE": "yapi",
@@ -10,12 +10,12 @@
       "authSource":"admin"
    },
    "mail": {
-      "enable": false,
-      "host": "smtp.163.com",
+      "enable": true,
+      "host": "smtp.qiye.aliyun.com",
       "port": 465,
-      "from": "***@163.com",
+      "from": "weileiming@zhongshianhong.com",
       "auth": {
-         "user": "***@163.com",
+         "user": "weileiming@zhongshianhong.com",
          "pass": "*****"
       }
    }

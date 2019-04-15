@@ -17,16 +17,16 @@ function mk_d(){
 
 
 function start-mongo(){
-    mk_d /data/opt/mongodb/data/configdb
-    mk_d /data/opt/mongodb/data/db/
+    mk_d /srv/mongodb/data/configdb
+    mk_d /srv/mongodb/data/db/
 
     sudo docker kill mongod
     sudo docker rm mongod
     sudo docker run  \
     --name mongod \
     -p 27017:27017  \
-    -v /data/opt/mongodb/data/configdb:/data/configdb/ \
-    -v /data/opt/mongodb/data/db/:/data/db/ \
+    -v /srv/mongodb/data/configdb:/data/configdb/ \
+    -v /srv/mongodb/data/db/:/data/db/ \
     --net tools-net --ip 172.18.0.2 \
     -d mongo:4 --auth
 }
@@ -40,13 +40,13 @@ function init-mongo(){
 
 function start-yapi(){
     echo "start yapi server"
-    sudo docker run -d -p 3001:3001 --name yapi --net tools-net --ip 172.18.0.3 yapi
+    sudo docker run -d -p 9000:3000 --name yapi --net tools-net --ip 172.18.0.3 yapi
     echo "end yapi server"
 }
 
 function init-yapi(){
     echo "init yapi db and start yapi server"
-    sudo docker run -d -p 3001:3001 --name yapi --net tools-net --ip 172.18.0.3 yapi --initdb
+    sudo docker run -d -p 9000:3000 --name yapi --net tools-net --ip 172.18.0.3 yapi --initdb
     echo "init yapi done"
 }
 
@@ -55,7 +55,7 @@ function logs-yapi(){
 }
 
 function remove(){
-    sudo rm -r /data/opt/mongodb/
+    sudo rm -r /srv/mongodb/
 }
 
 function stop(){
@@ -67,12 +67,12 @@ function print_usage(){
   echo " Usage: bash start.sh <param>"
   echo " 可用参数：    "
   echo "   init-network:  初始化网络，第一次运行的时候执行，多次执行只会删除重建 "
-  echo "   start-mongo: 创建数据目录/data/opt/mongodb/data/db/，并启动MongoDB， 前提是init-network完成"
+  echo "   start-mongo: 创建数据目录/srv/mongodb/data/db/，并启动MongoDB， 前提是init-network完成"
   echo "   init-mongo:  初始化mongodb的用户，创建yapi用户和db，前提是mongodb已安装，即start-mongo完成"
   echo "   start-yapi:  单纯启动yapi"
   echo "   init-yapi:   初始化yapi的db，并启动。前提是MongoDB可以连接，即init-mongo完成"
   echo "   logs-yapi:  查看yapi容器的日志"
-  echo "   stop:   停止mongodb和yapi，但保留mongodb文件/data/opt/mongodb/data/db/"
+  echo "   stop:   停止mongodb和yapi，但保留mongodb文件/srv/mongodb/data/db/"
   echo "   remove: 删除db文件"
 }
 

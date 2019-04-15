@@ -15,7 +15,7 @@ WORKDIR ${HOME}
 
 COPY --from=builder /api/vendors /api/vendors
 COPY config.json /api/
-EXPOSE 3001
+EXPOSE 3000
 
 COPY docker-entrypoint.sh /api/
 RUN chmod 755 /api/docker-entrypoint.sh
