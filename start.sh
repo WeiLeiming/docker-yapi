@@ -24,6 +24,7 @@ function start-mongo(){
     sudo docker rm mongod
     sudo docker run  \
     --name mongod \
+    --restart=always \
     -p 27017:27017  \
     -v /srv/mongodb/data/configdb:/data/configdb/ \
     -v /srv/mongodb/data/db/:/data/db/ \
@@ -40,13 +41,13 @@ function init-mongo(){
 
 function start-yapi(){
     echo "start yapi server"
-    sudo docker run -d -p 9000:3000 --name yapi --net tools-net --ip 172.18.0.3 yapi
+    sudo docker run -d -p 9000:3000 --name yapi --restart=always --net tools-net --ip 172.18.0.3 yapi
     echo "end yapi server"
 }
 
 function init-yapi(){
     echo "init yapi db and start yapi server"
-    sudo docker run -d -p 9000:3000 --name yapi --net tools-net --ip 172.18.0.3 yapi --initdb
+    sudo docker run -d -p 9000:3000 --name yapi --restart=always --net tools-net --ip 172.18.0.3 yapi --initdb
     echo "init yapi done"
 }
 
