@@ -33,6 +33,14 @@ bash start.sh start-mongo
 bash start.sh start-yapi
 ```
 
+## 升级
+
+```shell
+$ ./start.sh stop
+$ ./build.sh {version}
+$ ./start.sh start-mongo
+$ ./start.sh start-yapi
+```
 
 ## 具体步骤
 
